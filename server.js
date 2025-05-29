@@ -45,4 +45,13 @@ app.delete("/api/tasks/:id", (req, res) => {
     res.json({ id });
 });
 
+// get task by task id {params}
+app.get("/api/tasks/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = tasks.findIndex((task) => task.id === id);
+    const task = tasks[index];
+
+    res.json(task);
+})
+
 app.listen(5000, () => console.log("Server running on port 5000"));
